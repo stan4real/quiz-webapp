@@ -16,7 +16,7 @@ const rightAnswerCount = calcRightAnswers(userAnswers)
     <header>
         <h1 className="heading">
           {
-            currentQuestion < max ? 'Тестирование' :
+            currentQuestion <= max ? 'Тестирование' :
             rightAnswerCount === 0 ?
             'Упс :(' :
             rightAnswerCount === max ?
@@ -25,7 +25,7 @@ const rightAnswerCount = calcRightAnswers(userAnswers)
             'Хороший результат!'
           }
         </h1>
-        {currentQuestion >= max && (
+        {currentQuestion > max && (
           rightAnswerCount === 0 ?
           <p className='desc'> Вы неправильно ответили на все вопросы. <br/>Нужно подучить теорию.</p> 
           :
