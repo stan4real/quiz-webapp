@@ -1,5 +1,4 @@
-import { QuizType } from './helpers/types'
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { quizData } from './helpers/static'
 import Quiz from './components/ui/Quiz/Quiz'
 import { shuffleData } from './helpers/utils'
@@ -10,18 +9,13 @@ import { useQuizStore } from './components/store/quizStore'
 
 function App() {
   
-  const [shuffledQuiz, setShuffledQuiz] = useState<QuizType>(quizData)
   const [refreshToggle, setRefreshToggle] = useState<boolean>(false)
   const currentQuestion = useQuizStore((state)=>state.currentQuestion)
-
-  useEffect(() => {
-    console.log('USEEFFECT SHUFFLING DATA')
-    console.log('---------------------_')
-
-    const newShuffledData = shuffleData(shuffledQuiz);
-    setShuffledQuiz(newShuffledData)
-
-  }, [refreshToggle]);
+  
+  const shuffledQuiz = useMemo(()=>{
+    return shuffleData(quizData) 
+  }, [refreshToggle])
+  
   console.log('shuffledData', shuffledQuiz)
   console.log('APP RENDeRES')
   return (
