@@ -17,7 +17,8 @@ function App() {
   useEffect(() => {
     console.log('USEEFFECT SHUFFLING DATA')
     console.log('---------------------_')
-    setShuffledQuiz(shuffleData(quizData))
+    const newShuffledData = shuffleData(shuffledQuiz);
+    setShuffledQuiz(newShuffledData)
 
   }, [refreshToggle]);
 
@@ -28,7 +29,7 @@ function App() {
           max={shuffledQuiz.length}
         />
         {
-          currentQuestion <= shuffledQuiz.length ? 
+          (currentQuestion <= shuffledQuiz.length) ? (
           <>
             <Quiz
               shuffledQuiz={shuffledQuiz}
@@ -37,12 +38,12 @@ function App() {
               max={shuffledQuiz.length}
             />
           </>
-          :
+          ) : (
           <Results
             max={shuffledQuiz.length}
             setRefreshToggle={setRefreshToggle}
           />
-        }
+        )}
       </main>
     </>
   )
