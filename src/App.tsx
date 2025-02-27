@@ -10,7 +10,7 @@ import { useQuizStore } from './components/store/quizStore'
 
 function App() {
   
-  const [shuffledQuiz, setShuffledQuiz] = useState<QuizType>(shuffleData(quizData))
+  const [shuffledQuiz, setShuffledQuiz] = useState<QuizType>(quizData)
   const [refreshToggle, setRefreshToggle] = useState<boolean>(false)
   const currentQuestion = useQuizStore((state)=>state.currentQuestion)
 
@@ -22,8 +22,8 @@ function App() {
     setShuffledQuiz(newShuffledData)
 
   }, [refreshToggle]);
-  console.log(currentQuestion <= shuffledQuiz.length)
-  console.log(`${currentQuestion} <= ${shuffledQuiz.length}`)
+  console.log('shuffledData', shuffledQuiz)
+  console.log('APP RENDeRES')
   return (
     <>
       <main>

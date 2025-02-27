@@ -15,7 +15,7 @@ export const useQuizStore = create<QuizStore>((set) => ({
     userAnswers:[],
     setUserAnswers:(answer) => set((state)=>({userAnswers:[...state.userAnswers, answer]})),
     refreshQuiz:() => set(()=>({
-        currentQ:1,
+        currentQuestion:1,
         userAnswers:[]
     }))
 }))
