@@ -17,6 +17,10 @@ const Results = ({setRefreshToggle, max}:ResultProps) => {
     const handleRefreshQuiz = () => {
         refreshQuiz()
         setRefreshToggle((prev)=>!prev)
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'            
+        })
     }
   return (
     <>

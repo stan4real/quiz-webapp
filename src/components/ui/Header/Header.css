@@ -14,7 +14,11 @@ header{
 @media (max-width:500px){
     header{
         .heading{
-            font-size: 34px;
+            font-size: 28px;
+        }
+        .desc{
+            font-size: 20px;
+            line-height: normal;
         }
     }
 }
