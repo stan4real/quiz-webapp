@@ -46,6 +46,7 @@
 @media (max-width:700px){
     .content{
       padding: 20px;
+      min-height: 400px;
     }
     .content__question{
         font-size: 20px;
