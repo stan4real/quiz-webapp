@@ -18,7 +18,7 @@ const Results = ({setRefreshToggle, max}:ResultProps) => {
         refreshQuiz()
         setRefreshToggle((prev)=>!prev)
     }
-
+    console.log(rightAnswerCount, max)
   return (
     <>
         {

@@ -20,24 +20,25 @@ const Quiz = ({shuffledQuiz}:QuizProps) => {
         
         setSelectedAnswer(answer)
         setIsDisabled((prev)=>!prev)
-
+        console.log('handleAnswerClick before timer')
         setTimeout(() => {
+            console.log('handleAnswerClick After timer')
             setNextQuestion();
             setUserAnswers({question, answer})
             setIsDisabled(false)
             setSelectedAnswer(undefined)
         }, 1000)
-        console.log('handleAnswer')
 
     }
 
     useEffect(()=> {
-
+        console.log('USEEFFECT CHANGING Q&As')
+        console.log('---------------------_')
         setTitle(shuffledQuiz[currentQuestion-1].title)
         setAnswerVariant(shuffledQuiz[currentQuestion-1].answers)
 
     }, [currentQuestion])
-
+    console.log('QUIZ RENDErS')
   return (
     <section className="content">
         <h2 className='content__question'>{title}</h2>
