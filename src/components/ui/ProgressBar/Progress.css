@@ -1,0 +1,38 @@
+.progress{
+    position: relative;
+    border-radius: 99px;
+    margin-top: 41.5px;
+    height: 12px;
+    background-color: var(--main-bg-color);
+    width: 100%;
+}
+.progress-fill{
+    position: absolute;
+    left: 0;
+    border-radius: 99px;
+    height: 12px;
+    width: 10%;
+    background-color: var(--main-blue);
+    transition: width 150ms ease;
+}
+.progress__min{
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    font-size: 16px;
+    transform: translateY(-105%);
+}
+.progress__max{
+    position: absolute;
+    right: 0;
+    font-weight: 700;
+    font-size: 16px;
+    transform: translateY(-105%);
+}
+.progress__current{
+    position: absolute;
+    right: 0;
+    font-weight: 700;
+    font-size: 16px;
+    transform: translateY(55%);
+}
