@@ -15,9 +15,7 @@ function App() {
   const shuffledQuiz = useMemo(()=>{
     return shuffleData(quizData) 
   }, [refreshToggle])
-  
-  console.log('shuffledData', shuffledQuiz)
-  console.log('APP RENDeRES')
+
   return (
     <>
       <main>
