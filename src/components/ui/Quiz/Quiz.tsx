@@ -1,5 +1,5 @@
 import './Quiz.css'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Answer, QuizType } from '../../../helpers/types'
 import { useQuizStore } from '../../store/quizStore'
 
@@ -16,21 +16,18 @@ const Quiz = ({shuffledQuiz}:QuizProps) => {
     const [title, setTitle] = useState(shuffledQuiz[0].title)
     const [answer_variants, setAnswerVariant] = useState(shuffledQuiz[0].answers)
     
-    const isAnswerSelected = useRef(false)
 
     const handleAnswerClick = (answer:Answer, question:string) => {
-        if(isAnswerSelected.current) return
+        if(isDisabled) return 
 
         setSelectedAnswer(answer)
         setIsDisabled((prev)=>!prev)
-        isAnswerSelected.current = true
 
         setTimeout(() => {
             setNextQuestion();
             setUserAnswers({question, answer})
             setIsDisabled(false)
             setSelectedAnswer(undefined)
-            isAnswerSelected.current = false
         }, 1000)
 
     }
@@ -64,4 +61,4 @@ const Quiz = ({shuffledQuiz}:QuizProps) => {
   )
 }
 
-export default React.memo(Quiz)
+export default Quiz
