@@ -15,7 +15,7 @@ function App() {
   const currentQuestion = useQuizStore((state)=>state.currentQuestion)
 
   useEffect(() => {
-
+    
     setShuffledQuiz(shuffleData(quizData))
 
   }, [refreshToggle]);
