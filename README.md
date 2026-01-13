@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+# Quiz Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Single Page Application (SPA) with dynamic quiz logic, state management, and result calculation.  
+The application works entirely on one page using dynamic content rendering.
 
-Currently, two official plugins are available:
+## 🚀 Demo
+- Live demo: [Quiz Web App](https://stan4real.github.io/quiz-webapp/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧠 Tech Stack
+- React
+- TypeScript
+- Zustand (state management)
+- Vite
+- Semantic UI
+- CSS
+- Adaptive / Responsive UI
 
-## Expanding the ESLint configuration
+## ✨ Features
+- Single Page Application with dynamic content rendering
+- Randomized questions order on each app load
+- Answer selection with immediate state updates
+- Progress bar showing quiz completion
+- Results page with:
+  - number of correct and incorrect answers
+  - detailed results per question
+- Dynamic header message based on quiz result
+- Restart quiz functionality without page reload
+- Adaptive UI for different screen sizes
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🧠 State Management
+- Global application state is managed with **Zustand** using `useQuizStore`
+- State includes:
+  - `currentQuestion` — tracks the current question index
+  - `userAnswers` — array of answers submitted by the user (`FullAnswer[]`)
+- Actions:
+  - `setNextQuestion()` — advances to the next question
+  - `setUserAnswers(answer: FullAnswer)` — adds a new answer to `userAnswers`
+  - `refreshQuiz()` — resets the quiz (`currentQuestion` to 1, clears `userAnswers`)
+- This approach centralizes quiz logic, making state predictable and easy to manage across components
 
-- Configure the top-level `parserOptions` property like this:
+## 🧩 Application Logic
+- On application load, the questions list is shuffled
+- While the current question index is less than the total number of questions:
+  - the app displays the current question and available answers
+- After answering:
+  - the global state (`useQuizStore`) is updated
+  - the app navigates to the next question
+- When the last question is answered:
+  - the Results view is displayed
+- The Results page shows:
+  - total number of correct and incorrect answers
+  - result-based feedback message in the header
+- Users can restart the quiz and reset the state without reloading the page
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## ⚙️ Installation
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Clone the repository:
+```bash
+git clone https://github.com/stan4real/quiz-webapp.git
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+2. Change directory
+cd quiz-webapp
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+3. Install Dependencies
+npm install
+
+4. Start the development server
+npm run dev
